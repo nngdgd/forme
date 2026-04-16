@@ -10,7 +10,8 @@ TOKEN = '8431099507:AAH9qaaYkPRwiEx3S7KPcVbRTiIF6Xj9vJo'
 bot = telebot.TeleBot(TOKEN)
 
 ADMIN_ID = 495646038
-JSON_FILE = 'practice-493511-54adf2cc8263.json'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+JSON_FILE = os.path.join(BASE_DIR, 'practice-493511-5856ab84778d.json')
 SHEET_NAME = 'ИСП(9) и (11)'
 
 CONTRACTS_FOLDER = 'договоры'
@@ -39,16 +40,20 @@ def clean_string(text):
 
 # ================== 📊 РАБОТА С GOOGLE TABLES ==================
 
-def get_spreadsheet():
+def get_spreadsheet(chat_id=None):
     try:
-        # Проверяем наличие файла перед открытием
         if not os.path.exists(JSON_FILE):
-            print(f"❌ ФАЙЛ НЕ НАЙДЕН: {JSON_FILE}")
+            error_msg = f"❌ Файл не найден по пути: {JSON_FILE}"
+            print(error_msg)
+            if chat_id: bot.send_message(chat_id, error_msg)
             return None
+
         gc = gspread.service_account(filename=JSON_FILE)
         return gc.open(SHEET_NAME)
     except Exception as e:
-        print(f"❌ Ошибка подключения: {e}")
+        error_msg = f"❌ Ошибка Google API: {str(e)}"
+        print(error_msg)
+        if chat_id: bot.send_message(chat_id, error_msg)
         return None
 
 
