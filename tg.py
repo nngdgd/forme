@@ -9,7 +9,7 @@ TOKEN = '8431099507:AAHFrDJUEnduHO1TMBuMcTSeNBbygDTjgBE'
 bot = telebot.TeleBot(TOKEN)
 
 ADMIN_ID = 495646038
-JSON_FILE = 'Practice-493511-73467575d295.json'
+JSON_FILE = 'practice-493511-73467575d295.json'
 
 # СТРОГО КАК В БРАУЗЕРЕ:
 SHEET_NAME = 'ИСП(9) и (11)'
