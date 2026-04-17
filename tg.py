@@ -11,7 +11,7 @@ bot = telebot.TeleBot(TOKEN)
 
 ADMIN_ID = 495646038
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-JSON_FILE = os.path.join(BASE_DIR, 'practice-493511-b96939c553cf.json')
+JSON_FILE = os.path.join(BASE_DIR, 'practice-493511-5f937c9370f5.json')
 SHEET_NAME = 'ИСП(9) и (11)'
 
 CONTRACTS_FOLDER = 'договоры'
