@@ -57,8 +57,8 @@ def get_spreadsheet(chat_id=None):
         return None
 
 
-def load_all_students():
-    sh = get_spreadsheet()
+def load_all_students(chat_id=None):
+    sh = get_spreadsheet(chat_id)
     if not sh: return []
 
     all_students = []
@@ -148,7 +148,7 @@ def handle_all_messages(message):
         return
 
     bot.send_message(cid, "🔍 Ищу в базе Google...")
-    students = load_all_students()
+    students = load_all_students(cid)
 
     if not students:
         bot.send_message(cid, "❌ База данных недоступна или пуста. Проверьте JSON файл на хостинге.")
